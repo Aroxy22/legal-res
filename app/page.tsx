@@ -233,7 +233,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 relative z-10">
             {aiServices.map((service, index) => (
               <motion.div
                 key={service.name}
@@ -242,8 +242,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.02 }}
-                className="bg-white p-6 rounded-xl border border-borderSubtle hover:border-primary hover:shadow-md transition-all cursor-pointer group"
-                onClick={() => router.push(service.href)}
+                className="bg-white p-6 rounded-xl border border-borderSubtle hover:border-primary hover:shadow-md transition-all group"
               >
                 <div className="w-12 h-12 mb-4 rounded-lg bg-gradient-to-br from-legalNavy/10 to-legalCharcoal/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <svg className="w-6 h-6 text-legalNavy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -254,7 +253,12 @@ export default function Home() {
                   {service.name}
                 </h3>
                 <p className="text-textSecondary mb-4">{service.description}</p>
-                <span className="text-legalNavy font-medium text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">Try it now <span className="group-hover:translate-x-1 transition-transform">→</span></span>
+                <button
+                  onClick={() => router.push(service.href)}
+                  className="w-full mt-4 px-4 py-2 bg-legalNavy text-white rounded-lg font-medium hover:bg-primaryHover transition-all text-sm"
+                >
+                  Try it now →
+                </button>
               </motion.div>
             ))}
           </div>
